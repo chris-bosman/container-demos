@@ -1,0 +1,24 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: node-hello-world
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/auth-type: basic
+    nginx.ingress.kubernetes.io/auth-secret: basic-auth
+    nginx.ingress.kubernetes.io/auth-realm: 'Authentication Required'
+    kubernetes.io/ingress.allow-http: "false"
+spec:
+  rules:
+  - host: demo.kubedemo.com
+    http:
+      paths:
+      - backend:
+          serviceName: node-hello-world
+          servicePort: 80
+        path: /
+  tls:
+  - secretName: ssl-cert
+    hosts:
+    - demo.kubedemo.com

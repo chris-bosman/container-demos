@@ -1,0 +1,16 @@
+app:
+  name: node-hello-world
+  host: demo.kubedemo.com
+registry:
+  url: index.docker.io
+  username: 
+  password: 
+port:
+  external: 80
+  internal: 3000
+replicas:
+  min: 1
+  max: 10
+metric:
+  resource: cpu
+  usage: 50

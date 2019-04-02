@@ -1,0 +1,13 @@
+apiVersion: v1
+entries:
+  node-hello-world:
+  - apiVersion: v1
+    appVersion: "1.0"
+    created: 2018-08-03T10:36:18.055648992-05:00
+    description: A Helm chart for Kubernetes
+    digest: 910bee4b34e1443446feec0370c98481a3eeaf3231adced9268a217301128adc
+    name: node-hello-world
+    urls:
+    - http://127.0.0.1:8879/node-hello-world/node-hello-world-0.1.0.tgz
+    version: 0.1.0
+generated: 2018-08-03T10:36:18.054331916-05:00

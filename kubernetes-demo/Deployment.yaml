@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: node-hello-world
+  labels:
+    app: node-hello-world
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: node-hello-world
+  template:
+    metadata:
+      labels:
+        app: node-hello-world
+    spec:
+      containers:
+      - name: node-hello-world
+        image: index.docker.io/racecarbrown/node-hello-world:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: 3000
+            name: app-port
+      imagePullSecrets:
+      - name: docker-auth

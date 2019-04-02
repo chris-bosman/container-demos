@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+  labels:
+    app: {{ .Values.app.name }}
+spec:
+  replicas: {{ .Values.replicas.min }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+    spec:
+      containers:
+      - name: {{ .Values.app.name }}
+        image: {{ .Values.registry.url }}/{{ .Values.registry.username }}/{{ .Values.app.name }}:latest
+        imagePullPolicy: Always
+        ports:
+          - containerPort: {{ .Values.port.internal }}
+            name: app-port
+      imagePullSecrets:
+      - name: docker-auth
